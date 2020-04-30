@@ -58,16 +58,23 @@ function prevSong() {
 }
 
 // Next Song
-function prevSong() {
-  songIndex--;
+function nextSong() {
+  songIndex++;
 
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
   }
 
   loadSong(songs[songIndex]);
 
   playSong();
+}
+
+// Update Progress Bar
+function updateProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
 }
 
 // Event Listeners
@@ -84,3 +91,6 @@ playBtn.addEventListener('click', () => {
 // Change Song
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+
+// Time / Song Update
+audio.addEventListener('timeupdate', updateProgress);
