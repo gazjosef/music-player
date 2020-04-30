@@ -1,4 +1,4 @@
-const musicContainer = document.getElementById('music_container');
+const musicContainer = document.getElementById('music-container');
 
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
@@ -14,12 +14,14 @@ const cover = document.getElementById('cover');
 const songs = ['hey', 'summer', 'ukulele'];
 
 // Keep Track Of Songs
-let songIndex = 2;
+let songIndex = 0;
 
 // Initially Load Song Details Into DOM
-loadSong(songs(songIndex));
+loadSong(songs[songIndex]);
 
 // Update Song Details
 function loadSong(song) {
   title.innerText = song;
+  audio.src = `music/${song}.mp3`;
+  cover.src = `images/${song}.jpg`;
 }
